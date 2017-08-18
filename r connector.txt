@@ -31,5 +31,17 @@ bqTable <- get_table(project = projectID, dataset = dataSetID , table = tableID)
 
 # работа с R завершена
 
+
+
+#далее в PBI пример скрипта на R
+
+library(bigrquery)
+setwd("C:/BQ_Integration")
+projectID <- "XXXXXXX"
+dataSetID <- "XXXXXXXXX"
+tableID <- "XXXXXXXX"
+
+qry <- paste0("SELECT * FROM ", dataSetID,".",tableID)
+bqTable <- query_exec(query = qry , project = projectID)
  
 
