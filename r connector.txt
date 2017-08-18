@@ -1,0 +1,35 @@
+﻿#Ставим R последней версии 
+#Открываем консоль - переходим в папку «C:\Program Files\R\R-3.3.0\bin» и запускаем файл «R.exe». Далее откроется консоль для работы с R
+
+
+> install.packages("bigrquery")
+
+#На диске C создаем папку «BQ_Integration», в ней мы будем сохранять учетные данные для доступа к API Google BigQuery.
+
+> setwd("C:/BQ_Integration")
+> setwd("C:/BQ_Integration");
+> getwd();
+
+
+# появится вот такая надпись[1] "C:/BQ_Integration"
+# далее подключаем пакет «bigrquery», установленный ранее с помощью «library(bigrquery)»
+
+library(bigrquery)
+
+#проходим первую аутентификацию
+
+projectID <- "reanalytics-174807" #Название проекта, получить его можно из URL
+dataSetID <- "OWOXBI_Streaming" #Название набора данных, смотреть в интерфейсе BigQuery
+tableID <- "streaming_20170806" #Название таблицы
+
+bqTable <- get_table(project = projectID, dataset = dataSetID , table = tableID)
+
+#далее в консоли на вопрос «Use a local file .httr-oauth to cache OAuth access credentials between R sessions?» отвечаем «Yes»
+# авторизуемся в аккаунте, даем разрешения
+# после этого должно последовать сообщение о том, что аутентификация прошла успешно
+
+
+# работа с R завершена
+
+ 
+
